@@ -36,8 +36,9 @@ jobs:
           set -euo pipefail
 
           if [ -z "${SYNC_TOKEN}" ]; then
-            echo "ERROR: SYNC_TOKEN secret is not set. Add a PAT with write access to github-sdk."
-            exit 1
+            echo "WARNING: SYNC_TOKEN secret is not set. Skipping sync."
+            echo "To enable sync, add a PAT with write access to github-sdk as a repository secret named SYNC_TOKEN."
+            exit 0
           fi
 
           # checkout already fetched all branches/tags (fetch-depth: 0), so NO extra
